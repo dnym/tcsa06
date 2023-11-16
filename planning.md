@@ -8,7 +8,7 @@
 - Will there be multiple simultaneous users?
   - >Yes, there may be multiple employees using the application simultaneously, especially during peak hours. It should efficiently handle concurrent users accessing drink information from the database.
 - Are there any requirements on response time?
-  - The application should provide quick responses to ensure efficient service for employees. It's important that the response time is fast enough to support a smooth workflow during busy periods in the restaurant.
+  - >The application should provide quick responses to ensure efficient service for employees. It's important that the response time is fast enough to support a smooth workflow during busy periods in the restaurant.
 - Should there be any caching?
   - >If caching can improve the application's speed and responsiveness, it's a good idea. However, ensure that the information remains up-to-date to provide accurate details about the drinks in the restaurant's database.
 - The main use case centers around the user finding a drink by category, yes?
