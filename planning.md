@@ -31,3 +31,9 @@
   - >No, it's preferable to display information in a language understood by our employees, English. This ensures clarity and ease of use, aligning with the language proficiency of the restaurant staff.
 - Some instructions are measured in fluid ounces, some in centiliters. Should they be converted to all be one or the other?
   - >Yes, it would be more convenient for our employees if all measurements are standardized to either fluid ounces or centiliters. Consistency in units makes the information more accessible and avoids potential confusion.
+
+### Follow-up Questions
+- What if the DB/API is unavailable?
+- What's a good cache lifetime?
+- How about having the application be navigable using only arrow keys (for those who so wish)? I.e. item selection and information scrolling using up-down, and screen switching using left-right (back-forward).
+- What if a drink is not found when searching?
