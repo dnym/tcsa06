@@ -34,6 +34,10 @@
 
 ### Follow-up Questions
 - What if the DB/API is unavailable?
+  - Nothing to do, so show an error screen.
 - What's a good cache lifetime?
+  - Drinks shouldn't change, so 24 hours seems fine.
 - How about having the application be navigable using only arrow keys (for those who so wish)? I.e. item selection and information scrolling using up-down, and screen switching using left-right (back-forward).
+  - >That sounds user-friendly. Allowing navigation with arrow keys provides a straightforward and intuitive way for employees to move through the application. It enhances accessibility and accommodates various preferences in how users interact with the system.
 - What if a drink is not found when searching?
+  - Simply show a "no results" message.
