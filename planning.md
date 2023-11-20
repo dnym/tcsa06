@@ -50,3 +50,71 @@
 - Filtering
 - Unit conversion
 - Error handling & missing data handling
+
+## User Interface
+Drinks category menu:
+```text
+  +-----CATEGORIES------+
+  | Beer                |
+  +---------------------+
+>>| Cocktail            |<<
+  +---------------------+
+  | Cocoa               |
+  +---------------------+
+  | Coffee / Tea        |
+  +---------------------+
+  | Homemade Liqueur    |
+  +---------------------+
+  | Ordinary Drink      |
+  +---------------------+
+  | Punch / Party Drink |
+  +---------------------+
+  | Shake               |
+  +---------------------+
+  | Shot                |
+  +---------------------+
+  | Soft Drink          |
+  +---------------------+
+  | Other / Unknown     |
+  +---------------------+
+
+--------------------
+Press [S] to search,
+or [F] to filter.
+```
+
+Drink listing:
+```text
+Cocktail (page 1/20)
+--------------------
+
+  +-------------------------------------+
+  | 155 Belmont                         |
+  +-------------------------------------+
+  | 57 Chevy with a White License Plate |
+  +-------------------------------------+
+  | 747 Drink                           |
+  +-------------------------------------+
+  | 9 1/2 Weeks                         |
+  +-------------------------------------+
+>>| A Gilligan's Island                 |<<
+  +-------------------------------------+
+```
+
+Drink information:
+```text
+Name: A Gilligan's Island
+Category: Cocktail
+Alcoholic: yes
+
+Glass: Collins glass
+
+Ingredients:
+- Vodka, 1 oz
+- Peach schnapps, 1 oz
+- Orange juice, 3 oz
+- Cranberry juice, 3 oz
+
+Instructions:
+Shaken, not stirred!
+```
