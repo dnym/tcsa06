@@ -41,3 +41,12 @@
   - >That sounds user-friendly. Allowing navigation with arrow keys provides a straightforward and intuitive way for employees to move through the application. It enhances accessibility and accommodates various preferences in how users interact with the system.
 - What if a drink is not found when searching?
   - Simply show a "no results" message.
+
+## MVP Functionality
+- Console menu system & data presentation & user input
+- HTTP API reading
+- Caching
+- Searching
+- Filtering
+- Unit conversion
+- Error handling & missing data handling
