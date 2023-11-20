@@ -118,3 +118,8 @@ Ingredients:
 Instructions:
 Shaken, not stirred!
 ```
+
+## Logic Checklist
+- [x] Know C# programming & basic syntax.
+- [x] Know how to make a console menu & take user input.
+- [ ] Know how to read data from an HTTP API.
