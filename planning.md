@@ -123,3 +123,28 @@ Shaken, not stirred!
 - [x] Know C# programming & basic syntax.
 - [x] Know how to make a console menu & take user input.
 - [ ] Know how to read data from an HTTP API.
+
+## Data Structures
+- Category (string)
+- Ingredient
+  - Id (int)
+  - Name (string)
+  - Description (string)
+  - Type (string)
+  - Alcohol (boolean)
+  - AlcoholByVolume (float)
+- Glass (string)
+- AlcoholType (string)
+- Tag (string)
+- Drink
+  - Id (int)
+  - Name (string)
+  - AlternateName (string?)
+  - Tags (`List<string>`)
+  - Category (string?)
+  - IBACategory (string?)
+  - AlcoholType (string?)
+  - Glass (string?)
+  - Ingredients (`List<string>`)
+  - Measures (`List<string>`)
+  - Instructions (`List<string>`)
