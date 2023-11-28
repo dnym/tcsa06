@@ -5,25 +5,27 @@ using TCSAHelper.Console;
 
 namespace DrinksInfo.UI;
 
-internal static class MainMenu
+internal static class DrinksListing
 {
-    public static Screen Get(IDataAccess dataAccess)
+    internal static Screen Get(IDataAccess dataAccess, Category category)
     {
-        List<Category> categories = dataAccess.GetCategoriesAsync().Result;
+        List<ListDrink> drinks = dataAccess.GetDrinksByCategoryAsync(category).Result;
 
         string menuContents = ConsoleTableBuilder
-            .From(categories.ConvertAll(c => c.Name))
-            .WithTitle("CATEGORIES")
+            .From(drinks.ConvertAll(d => d.Name))
             .WithFormat(ConsoleTableBuilderFormat.Alternative)
             .Export().ToString();
         SelectionMenu? menu = null;
         int previousUsableHeight = -1;
 
-        Screen screen = new(body: (_, usableHeight) =>
+        var screen = new Screen(header: (_, _) =>
+        {
+            return category.Name;
+        }, body: (_, usableHeight) =>
         {
             if (usableHeight != previousUsableHeight)
             {
-                menu = new(menuContents, itemCount: 11, indexToLine: (i) => 1 + (2 * i), leftIndicator: ">>", rightIndicator: "<<", startSelectedIndex: menu?.SelectedIndex ?? 0, maxHeight: usableHeight);
+                menu = new(menuContents, drinks.Count, indexToLine: (i) => 1 + (2 * i), leftIndicator: ">>", rightIndicator: "<<", startSelectedIndex: menu?.SelectedIndex ?? 0, maxHeight: usableHeight);
             }
             previousUsableHeight = usableHeight;
 
@@ -36,7 +38,8 @@ internal static class MainMenu
         screen.AddAction(ConsoleKey.Home, () => menu!.SelectedIndex = 0);
         screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = 10);
 
-        screen.AddAction(ConsoleKey.RightArrow, () => DrinksListing.Get(dataAccess, categories[menu!.SelectedIndex]).Show());
+        screen.AddAction(ConsoleKey.LeftArrow, screen.ExitScreen);
+        screen.AddAction(ConsoleKey.RightArrow, () => Console.WriteLine(drinks[menu!.SelectedIndex]));
 
         return screen;
     }
