@@ -1,4 +1,5 @@
-﻿using DrinksInfo.UI;
+﻿using DrinksInfo.DataAccess;
+using DrinksInfo.UI;
 
 namespace DrinksInfo;
 
@@ -6,6 +7,7 @@ internal static class Program
 {
     static void Main()
     {
-        MainMenu.Get().Show();
+        IDataAccess dataAccess = new Mock();
+        MainMenu.Get(dataAccess).Show();
     }
 }

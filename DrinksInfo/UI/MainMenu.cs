@@ -1,34 +1,18 @@
-﻿using TCSAHelper.Console;
+﻿using ConsoleTableExt;
+using DrinksInfo.DataAccess;
+using TCSAHelper.Console;
 
 namespace DrinksInfo.UI;
 
 internal static class MainMenu
 {
-    public static Screen Get()
+    public static Screen Get(IDataAccess dataAccess)
     {
-        const string menuContents = @"+-----CATEGORIES------+
-| Beer                |
-+---------------------+
-| Cocktail            |
-+---------------------+
-| Cocoa               |
-+---------------------+
-| Coffee / Tea        |
-+---------------------+
-| Homemade Liqueur    |
-+---------------------+
-| Ordinary Drink      |
-+---------------------+
-| Punch / Party Drink |
-+---------------------+
-| Shake               |
-+---------------------+
-| Shot                |
-+---------------------+
-| Soft Drink          |
-+---------------------+
-| Other / Unknown     |
-+---------------------+";
+        string menuContents = ConsoleTableBuilder
+            .From(dataAccess.GetCategoriesAsync().Result.ConvertAll(c => c.Name))
+            .WithTitle("CATEGORIES")
+            .WithFormat(ConsoleTableBuilderFormat.Alternative)
+            .Export().ToString();
         SelectionMenu? menu = null;
         int previousUsableHeight = -1;
 
