@@ -130,4 +130,34 @@ public class Mock : IDataAccess
         };
         return Task.FromResult(drinks);
     }
+
+    public Task<Drink?> GetDrinkByIdAsync(int id)
+    {
+        Drink? drink = null;
+        if (id > 0)
+        {
+            drink = new(11007, "Margarita", null,
+            new Tag[]
+            {
+                new("IBA"),
+                new("ContemporaryClassic"),
+            }, new("Ordinary Drink"), new("Contemporary Classics"),
+            new("Alcoholic"), new("Cocktail glass"),
+            new Ingredient[]
+            {
+                new("Tequila"),
+                new("Triple sec"),
+                new("Lime juice"),
+                new("Salt")
+            },
+            new string[]
+            {
+                "1 1/2 oz ",
+                "1/2 oz ",
+                "1 oz "
+            },
+            "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.");
+        }
+        return Task.FromResult(drink);
+    }
 }
