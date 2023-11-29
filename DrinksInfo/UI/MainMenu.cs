@@ -34,7 +34,7 @@ internal static class MainMenu
         screen.AddAction(ConsoleKey.PageUp, () => menu!.SelectedIndex -= 5);
         screen.AddAction(ConsoleKey.PageDown, () => menu!.SelectedIndex += 5);
         screen.AddAction(ConsoleKey.Home, () => menu!.SelectedIndex = 0);
-        screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = 10);
+        screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = categories.Count - 1);
 
         screen.AddAction(ConsoleKey.RightArrow, () => DrinksListing.Get(dataAccess, categories[menu!.SelectedIndex]).Show());
 
