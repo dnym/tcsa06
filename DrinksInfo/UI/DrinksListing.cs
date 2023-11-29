@@ -36,10 +36,10 @@ internal static class DrinksListing
         screen.AddAction(ConsoleKey.PageUp, () => menu!.SelectedIndex -= 5);
         screen.AddAction(ConsoleKey.PageDown, () => menu!.SelectedIndex += 5);
         screen.AddAction(ConsoleKey.Home, () => menu!.SelectedIndex = 0);
-        screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = 10);
+        screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = drinks.Count - 1);
 
         screen.AddAction(ConsoleKey.LeftArrow, screen.ExitScreen);
-        screen.AddAction(ConsoleKey.RightArrow, () => Console.WriteLine(drinks[menu!.SelectedIndex]));
+        screen.AddAction(ConsoleKey.RightArrow, () => DrinkInformation.Get(dataAccess, drinks[menu!.SelectedIndex]).Show());
 
         return screen;
     }
