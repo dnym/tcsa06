@@ -32,7 +32,7 @@ internal static class DrinksListing
 
                 return menu!.Show();
             }
-        });
+        }, footer: (_, _) => "Select/Back: [->][<-]");
         screen.AddAction(ConsoleKey.UpArrow, () => menu!.SelectedIndex--);
         screen.AddAction(ConsoleKey.DownArrow, () => menu!.SelectedIndex++);
         screen.AddAction(ConsoleKey.PageUp, () => menu!.SelectedIndex -= 5);

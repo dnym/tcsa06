@@ -166,4 +166,149 @@ public class Mock : IDataAccess
         var drinks = GetDrinksByCategoryAsync(new("")).Result;
         return Task.FromResult(drinks.Where(d => d.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList());
     }
+
+    public Task<List<ListDrink>> GetDrinksByLetterAsync(char initial)
+    {
+        var drinks = GetDrinksByCategoryAsync(new("")).Result;
+        return Task.FromResult(drinks.Where(d => d.Name.StartsWith(initial.ToString(), StringComparison.OrdinalIgnoreCase)).ToList());
+    }
+
+    public Task<List<Glass>> GetGlassesAsync()
+    {
+        var glasses = new List<Glass>
+        {
+            new("Highball glass"),
+            new("Cocktail glass"),
+            new("Old-fashioned glass"),
+        };
+        return Task.FromResult(glasses);
+    }
+
+    public Task<List<ListDrink>> GetDrinksByGlassAsync(Glass glass)
+    {
+        var drinks = new List<ListDrink>
+        {
+            new(16108, "9 1/2 Weeks"),
+            new(17222, "A1"),
+            new(17223, "Abbey Martini"),
+            new(11010, "After Dinner Cocktail"),
+            new(11013, "Alaska Cocktail"),
+            new(11021, "Allegheny"),
+            new(11028, "Amaretto Stinger"),
+            new(11034, "Angel Face"),
+            new(12658, "Banana Strawberry Shake Daiquiri"),
+            new(17184, "Between The Sheets"),
+            new(17254, "Bijou"),
+            new(11118, "Blue Margarita"),
+            new(11222, "Casa Blanca"),
+            new(17187, "Derby"),
+            new(11326, "Dubonnet Cocktail"),
+            new(11339, "English Rose Cocktail"),
+            new(11375, "Foxy Lady"),
+            new(11391, "Frozen Pineapple Daiquiri"),
+            new(12758, "Gagliardo"),
+            new(17199, "Golden dream"),
+            new(11542, "Jack Rose Cocktail"),
+            new(11604, "Kentucky Colonel"),
+            new(11634, "Lady Love Fizz"),
+            new(11720, "Martinez Cocktail"),
+            new(11728, "Martini"),
+            new(17188, "Mary Pickford"),
+            new(14842, "Midnight Mint"),
+            new(17189, "Monkey Gland"),
+            new(13204, "New York Lemonade")
+        };
+        return Task.FromResult(drinks);
+    }
+
+    public Task<List<Ingredient>> GetIngredientsAsync()
+    {
+        var ingredients = new List<Ingredient>
+        {
+            new("Light rum"),
+            new("Applejack"),
+            new("Gin"),
+            new("Dark rum"),
+            new("Sweet Vermouth"),
+            new("Strawberry schnapps"),
+            new("Scotch")
+        };
+        return Task.FromResult(ingredients);
+    }
+
+    public Task<List<ListDrink>> GetDrinksByIngredientAsync(Ingredient ingredient)
+    {
+        var drinks = new List<ListDrink>
+        {
+            new(15346, "155 Belmont"),
+            new(17105, "501 Blue"),
+            new(178318, "747 Drink"),
+            new(16943, "A Gilligan's Island"),
+            new(17224, "Absolutely Fabulous"),
+            new(14622, "Arctic Fish"),
+            new(11102, "Black Russian"),
+            new(11119, "Blue Mountain"),
+            new(11243, "Chocolate Black Russian"),
+            new(17196, "Cosmopolitan"),
+            new(14133, "Cosmopolitan Martini"),
+            new(13202, "Flaming Dr. Pepper"),
+            new(17002, "Gideon's Green Dinosaur"),
+            new(16987, "Irish Curdling Cow"),
+            new(14956, "Jello shots"),
+            new(14366, "Lemon Drop"),
+            new(178360, "Lemon Elderflower Spritzer"),
+            new(17204, "Long Island Iced Tea"),
+            new(11009, "Moscow Mule"),
+            new(13192, "National Aquarium"),
+            new(13499, "Oreo Mudslide"),
+            new(17214, "Russian Spring Punch"),
+            new(15184, "San Francisco"),
+            new(13625, "Screaming Orgasm"),
+            new(12162, "Screwdriver"),
+            new(17218, "Vesper"),
+            new(16967, "Vodka Fizz"),
+            new(178363, "Vodka Lemon"),
+            new(14167, "Vodka Martini"),
+            new(12528, "White Russian"),
+            new(16963, "Zorbatini")
+        };
+        return Task.FromResult(drinks);
+    }
+
+    public Task<List<AlcoholType>> GetAlcoholTypesAsync()
+    {
+        return Task.FromResult(new List<AlcoholType>
+        {
+            new("Alcoholic"),
+            new("Non alcoholic"),
+            new("Optional alcohol")
+        });
+    }
+
+    public Task<List<ListDrink>> GetDrinksByAlcoholTypeAsync(AlcoholType alcoholType)
+    {
+        var drinks = new List<ListDrink>
+        {
+            new(12560, "Afterglow"),
+            new(12564, "Apple Karate"),
+            new(12656, "Banana Strawberry Shake"),
+            new(17108, "Coke and Drops"),
+            new(12736, "Drinking Chocolate"),
+            new(12668, "Egg Cream"),
+            new(12674, "Fruit Shake"),
+            new(12712, "Grape lemon pineapple Smoothie"),
+            new(12954, "Holloween Punch"),
+            new(12770, "Iced Coffee"),
+            new(12688, "Just a Moonmint"),
+            new(12714, "Kiwi Papaya Smoothie"),
+            new(12716, "Mango Orange Smoothie"),
+            new(12748, "Orange Scented Hot Chocolate"),
+            new(12618, "Orangeade"),
+            new(15092, "Pysch Vitamin Light"),
+            new(12722, "Strawberry Shivers"),
+            new(12724, "Sweet Bananas"),
+            new(12726, "Tomato Tang")
+        };
+        return Task.FromResult(drinks);
+    }
 }

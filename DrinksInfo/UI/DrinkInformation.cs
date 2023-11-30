@@ -91,7 +91,7 @@ internal static class DrinkInformation
             previousUsableWidth = usableWidth;
 
             return linebrokenBody;
-        });
+        }, footer: (_, _) => "                  Back: [<-]");
 
         screen.AddAction(ConsoleKey.LeftArrow, screen.ExitScreen);
 

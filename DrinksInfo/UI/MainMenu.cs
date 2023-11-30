@@ -28,7 +28,10 @@ internal static class MainMenu
             previousUsableHeight = usableHeight;
 
             return menu!.Show();
-        }, footer: (_, _) => "List Navigation: [Up][Dn] [PgUp][PgDn] [Home][End]\nSelect: [->]\tBack: [<-]\n[S]earch\t[F]ilter\t[A]lphabetical");
+        }, footer: (_, _) => @"List Navigation: [Up][Dn] [PgUp][PgDn] [Home][End]
+Select/Back: [->][<-]
+        [S]earch        [A]lphabetical
+Filter: [G]lass         [I]ngredient     Al[c]ohol");
         screen.AddAction(ConsoleKey.UpArrow, () => menu!.SelectedIndex--);
         screen.AddAction(ConsoleKey.DownArrow, () => menu!.SelectedIndex++);
         screen.AddAction(ConsoleKey.PageUp, () => menu!.SelectedIndex -= 5);
@@ -43,6 +46,10 @@ internal static class MainMenu
             DrinksListing.Get(dataAccess, drinks, category.Name).Show();
         });
         screen.AddAction(ConsoleKey.S, () => SearchScreen.Get(dataAccess).Show());
+        screen.AddAction(ConsoleKey.A, () => AlphabeticalListing.Get(dataAccess).Show());
+        screen.AddAction(ConsoleKey.G, () => FilteredListing.GetGlasses(dataAccess).Show());
+        screen.AddAction(ConsoleKey.I, () => FilteredListing.GetIngredients(dataAccess).Show());
+        screen.AddAction(ConsoleKey.C, () => FilteredListing.GetAlcoholTypes(dataAccess).Show());
 
         return screen;
     }
