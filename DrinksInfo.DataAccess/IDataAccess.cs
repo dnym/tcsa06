@@ -7,4 +7,5 @@ public interface IDataAccess
     public Task<List<Category>> GetCategoriesAsync();
     public Task<List<ListDrink>> GetDrinksByCategoryAsync(Category category);
     public Task<Drink?> GetDrinkByIdAsync(int id);
+    public Task<List<ListDrink>> SearchDrinksAsync(string searchTerm);
 }

@@ -28,7 +28,7 @@ internal static class MainMenu
             previousUsableHeight = usableHeight;
 
             return menu!.Show();
-        });
+        }, footer: (_, _) => "List Navigation: [Up][Dn] [PgUp][PgDn] [Home][End]\nSelect: [->]\tBack: [<-]\n[S]earch\t[F]ilter\t[A]lphabetical");
         screen.AddAction(ConsoleKey.UpArrow, () => menu!.SelectedIndex--);
         screen.AddAction(ConsoleKey.DownArrow, () => menu!.SelectedIndex++);
         screen.AddAction(ConsoleKey.PageUp, () => menu!.SelectedIndex -= 5);
@@ -36,7 +36,13 @@ internal static class MainMenu
         screen.AddAction(ConsoleKey.Home, () => menu!.SelectedIndex = 0);
         screen.AddAction(ConsoleKey.End, () => menu!.SelectedIndex = categories.Count - 1);
 
-        screen.AddAction(ConsoleKey.RightArrow, () => DrinksListing.Get(dataAccess, categories[menu!.SelectedIndex]).Show());
+        screen.AddAction(ConsoleKey.RightArrow, () =>
+        {
+            Category category = categories[menu!.SelectedIndex];
+            List<ListDrink> drinks = dataAccess.GetDrinksByCategoryAsync(category).Result;
+            DrinksListing.Get(dataAccess, drinks, category.Name).Show();
+        });
+        screen.AddAction(ConsoleKey.S, () => SearchScreen.Get(dataAccess).Show());
 
         return screen;
     }

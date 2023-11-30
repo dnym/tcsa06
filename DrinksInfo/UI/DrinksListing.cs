@@ -7,10 +7,8 @@ namespace DrinksInfo.UI;
 
 internal static class DrinksListing
 {
-    internal static Screen Get(IDataAccess dataAccess, Category category)
+    internal static Screen Get(IDataAccess dataAccess, List<ListDrink> drinks, string header)
     {
-        List<ListDrink> drinks = dataAccess.GetDrinksByCategoryAsync(category).Result;
-
         string menuContents = ConsoleTableBuilder
             .From(drinks.ConvertAll(d => d.Name))
             .WithFormat(ConsoleTableBuilderFormat.Alternative)
@@ -18,18 +16,22 @@ internal static class DrinksListing
         SelectionMenu? menu = null;
         int previousUsableHeight = -1;
 
-        var screen = new Screen(header: (_, _) =>
+        var screen = new Screen(header: (_, _) => header, body: (_, usableHeight) =>
         {
-            return category.Name;
-        }, body: (_, usableHeight) =>
-        {
-            if (usableHeight != previousUsableHeight)
+            if (drinks.Count == 0)
             {
-                menu = new(menuContents, drinks.Count, indexToLine: (i) => 1 + (2 * i), leftIndicator: ">>", rightIndicator: "<<", startSelectedIndex: menu?.SelectedIndex ?? 0, maxHeight: usableHeight);
+                return "No drinks found.";
             }
-            previousUsableHeight = usableHeight;
+            else
+            {
+                if (usableHeight != previousUsableHeight)
+                {
+                    menu = new(menuContents, drinks.Count, indexToLine: (i) => 1 + (2 * i), leftIndicator: ">>", rightIndicator: "<<", startSelectedIndex: menu?.SelectedIndex ?? 0, maxHeight: usableHeight);
+                }
+                previousUsableHeight = usableHeight;
 
-            return menu!.Show();
+                return menu!.Show();
+            }
         });
         screen.AddAction(ConsoleKey.UpArrow, () => menu!.SelectedIndex--);
         screen.AddAction(ConsoleKey.DownArrow, () => menu!.SelectedIndex++);

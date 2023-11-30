@@ -160,4 +160,10 @@ public class Mock : IDataAccess
         }
         return Task.FromResult(drink);
     }
+
+    public Task<List<ListDrink>> SearchDrinksAsync(string searchTerm)
+    {
+        var drinks = GetDrinksByCategoryAsync(new("")).Result;
+        return Task.FromResult(drinks.Where(d => d.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList());
+    }
 }
